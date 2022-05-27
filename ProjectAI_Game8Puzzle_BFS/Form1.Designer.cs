@@ -49,6 +49,11 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.pbx8 = new System.Windows.Forms.PictureBox();
             this.pbx9 = new System.Windows.Forms.PictureBox();
             this.gbAnhGoc = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnPrev = new ePOSOne.btnProduct.Button_WOC();
             this.btnNext = new ePOSOne.btnProduct.Button_WOC();
             this.btnTamDung = new ePOSOne.btnProduct.Button_WOC();
@@ -101,12 +106,13 @@ namespace ProjectAI_Game8Puzzle_BFS
             // 
             this.lblThoiGianDem.AutoSize = true;
             this.lblThoiGianDem.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThoiGianDem.Location = new System.Drawing.Point(807, 377);
+            this.lblThoiGianDem.Location = new System.Drawing.Point(184, -1);
             this.lblThoiGianDem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblThoiGianDem.Name = "lblThoiGianDem";
             this.lblThoiGianDem.Size = new System.Drawing.Size(248, 75);
             this.lblThoiGianDem.TabIndex = 16;
             this.lblThoiGianDem.Text = "00:00:00";
+            this.lblThoiGianDem.Click += new System.EventHandler(this.lblThoiGianDem_Click);
             // 
             // lblBuocDi
             // 
@@ -132,7 +138,7 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.gbKhung.Controls.Add(this.pbx7);
             this.gbKhung.Controls.Add(this.pbx8);
             this.gbKhung.Controls.Add(this.pbx9);
-            this.gbKhung.Location = new System.Drawing.Point(32, 46);
+            this.gbKhung.Location = new System.Drawing.Point(32, 50);
             this.gbKhung.Margin = new System.Windows.Forms.Padding(4);
             this.gbKhung.Name = "gbKhung";
             this.gbKhung.Padding = new System.Windows.Forms.Padding(4);
@@ -253,14 +259,75 @@ namespace ProjectAI_Game8Puzzle_BFS
             // 
             this.gbAnhGoc.BackgroundImage = global::ProjectAI_Game8Puzzle_BFS.Properties.Resources.hqdefault;
             this.gbAnhGoc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gbAnhGoc.Location = new System.Drawing.Point(701, 56);
+            this.gbAnhGoc.Location = new System.Drawing.Point(720, 78);
             this.gbAnhGoc.Margin = new System.Windows.Forms.Padding(4);
             this.gbAnhGoc.Name = "gbAnhGoc";
             this.gbAnhGoc.Padding = new System.Windows.Forms.Padding(4);
-            this.gbAnhGoc.Size = new System.Drawing.Size(436, 304);
+            this.gbAnhGoc.Size = new System.Drawing.Size(455, 369);
             this.gbAnhGoc.TabIndex = 10;
             this.gbAnhGoc.TabStop = false;
             this.gbAnhGoc.Text = "Hình Gốc";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Cornsilk;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(916, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(198, 15);
+            this.textBox1.TabIndex = 33;
+            this.textBox1.Text = "Dan Bảo Nguyên 19110036";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.Cornsilk;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(1108, 12);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(198, 15);
+            this.textBox2.TabIndex = 34;
+            this.textBox2.Text = "Phùng Khánh Tâm 16110570";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.Cornsilk;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Location = new System.Drawing.Point(700, 12);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(198, 15);
+            this.textBox3.TabIndex = 35;
+            this.textBox3.Text = "Nhóm 10";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.Cornsilk;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(638, 478);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(56, 23);
+            this.textBox4.TabIndex = 36;
+            this.textBox4.Text = "Case";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBox1.Location = new System.Drawing.Point(606, 507);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 37;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnPrev
             // 
@@ -426,7 +493,7 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpload.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnUpload.Location = new System.Drawing.Point(1163, 312);
+            this.btnUpload.Location = new System.Drawing.Point(1181, 387);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.OnHoverBorderColor = System.Drawing.Color.DarkOliveGreen;
             this.btnUpload.OnHoverButtonColor = System.Drawing.Color.DarkOliveGreen;
@@ -444,6 +511,11 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(1305, 687);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnTamDung);
@@ -505,6 +577,11 @@ namespace ProjectAI_Game8Puzzle_BFS
         private ePOSOne.btnProduct.Button_WOC btnTamDung;
         private ePOSOne.btnProduct.Button_WOC btnNext;
         private ePOSOne.btnProduct.Button_WOC btnPrev;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
