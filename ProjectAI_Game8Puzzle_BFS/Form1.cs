@@ -4,11 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+// Nhóm sinh viên thực hiện
+//		Dan Bảo Nguyên 19110036
+//		Phùng Khánh Tâm	16110570
 
 namespace ProjectAI_Game8Puzzle_BFS
 {
@@ -16,6 +21,7 @@ namespace ProjectAI_Game8Puzzle_BFS
     {
 		private SoundPlayer soundPlayer;
 		private bool isUpLoad = false;
+		private bool isChooseCase = false;
 		
 		string FileName;
         int chiSoOTrong, soBuocDi = 0;
@@ -42,7 +48,7 @@ namespace ProjectAI_Game8Puzzle_BFS
         public Form1()
         {
             InitializeComponent();
-			this.Text = "8 PUZZLE version HCMUTE ";
+			this.Text = "8 PUZZLE version HCMUTE";
 
 			// Add test case
 			mangTestCase.Add(tesCase1);
@@ -59,7 +65,7 @@ namespace ProjectAI_Game8Puzzle_BFS
         private void Form1_Load(object sender, EventArgs e)
         {
 			isUpLoad = false;
-			soundPlayer.Play();
+			//soundPlayer.Play();
 			lblBuocDi.Text += soBuocDi;
 			lblThoiGianDem.Text = "00:00:00";
 			ChoiLai();
@@ -88,11 +94,18 @@ namespace ProjectAI_Game8Puzzle_BFS
 
 			lblTimeGiai.Text = "Solution time  : 0.0 ms";
 			lblBuocDuyet.Text = "Number of browsing steps: 0";
-
+			btnNext.Visible = false;
+			btnPrev.Visible = false;
+			
 			Random r = new Random();
 			int j = r.Next(0, 5);
 			//j = 2;
 			List<int> mangRandom = mangTestCase[j];
+			//Nếu người dùng chọn trường hợp 
+			if (isChooseCase)
+            {
+				mangRandom = mangTestCase[Int32.Parse(comboBox1.SelectedIndex.ToString())];
+            }
 			mangHienTai = mangRandom;
 			if (isUpLoad==true)
             {				
@@ -127,6 +140,7 @@ namespace ProjectAI_Game8Puzzle_BFS
 				//mangHienTai = mangRandom;							
 			}
 			//return mangRandom;
+			isChooseCase = false;
 		}		
 		
 
@@ -167,22 +181,38 @@ namespace ProjectAI_Game8Puzzle_BFS
 
 		private void btnGiai_Click(object sender, EventArgs e)
         {
+			btnNext.Visible = true;
+			btnPrev.Visible = true;
 			timer.Stop();
 			//List<int> mangDau = ChoiLai();			
             State trThaiDau = new State(mangHienTai);
             State trThaiCuoi = new State(mangCuoi);
-            BFS bfs = new BFS(trThaiDau, trThaiCuoi);
+            Solve bfs = new Solve(trThaiDau, trThaiCuoi);
 
 			Stopwatch timer_tmp = new Stopwatch();
 			timer_tmp.Reset();
 			lblTimeGiai.Text = "Solution time : 0.0 ms";
 			timer_tmp.Start();
-			if (timer.ElapsedMilliseconds == 3)
+			if (timer_tmp.Elapsed.Minutes.ToString() == "1")
 			{
-				DialogResult OK = MessageBox.Show("Couldn't find the answer!!", "the game is easy", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				if(OK==DialogResult.OK) ChoiLai();
+				timer.Reset();
+				lblBuocDi.Text = "Number of steps : 0";
+				lblThoiGianDem.Text = "00:00:00";
+				soBuocDi = 0;
+				btnTamDung.Enabled = false;
+				DialogResult OK = MessageBox.Show("Couldn't find the answer!!", "The game is easy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				if (OK == DialogResult.OK)
+				{
+					ChoiLai();
+				}
+
 			}
-			this.ketQuaCuoiCung = bfs.Solve();
+			//if (timer_tmp.ElapsedMilliseconds == 3000)
+			//{
+			//	DialogResult OK = MessageBox.Show("Couldn't find the answer!!", "the game is easy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			//	if(OK==DialogResult.OK) ChoiLai();
+			//}
+			this.ketQuaCuoiCung = bfs.Solve_BreadthFS();
 
 			timer.Stop();
 			lblTimeGiai.Text = "Solution time : " + timer_tmp.Elapsed.TotalMilliseconds.ToString() + " ms";
@@ -280,7 +310,7 @@ namespace ProjectAI_Game8Puzzle_BFS
                 btnTamDung.Enabled = false;
             else
                 btnTamDung.Enabled = true;
-			//giới hạn lại thời gian chơi game thì mở code ra, tùy chỉnh theo tgian mình muốn ngay chổ
+			//giới hạn lại thời gian chơi game tùy chỉnh theo tgian mình muốn 
 			
 
             if (timer.Elapsed.Minutes.ToString() == "3")
@@ -290,8 +320,12 @@ namespace ProjectAI_Game8Puzzle_BFS
                 lblThoiGianDem.Text = "00:00:00";
 				soBuocDi = 0;
                 btnTamDung.Enabled = false;
-                MessageBox.Show("Time up!");
-				ChoiLai();
+				DialogResult OK = MessageBox.Show("Time up!!", "The game is easy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				if (OK == DialogResult.OK)
+				{
+					ChoiLai();
+				}
+				
             }
         }
 
@@ -331,7 +365,7 @@ namespace ProjectAI_Game8Puzzle_BFS
 
             if (currentState == ketQuaCuoiCung.Count - 1)
             {
-				DialogResult OK = MessageBox.Show("The machine has found the answer!!", "The game is easy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				DialogResult OK = MessageBox.Show("The computer has found the answer!!", "The game is easy", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				if (OK == DialogResult.OK) {
 					ChoiLai();
 					lblThoiGianDem.Text = "00:00:00";
@@ -343,13 +377,15 @@ namespace ProjectAI_Game8Puzzle_BFS
 
         private void btnGiaiToiUu_Click(object sender, EventArgs e)
 		{
+			btnNext.Visible = true;
+			btnPrev.Visible = true;
 			//List<int> mangDau = ChoiLai();
 			//List<int> mangDau = new List<int> { 1, 2, 9, 3, 4, 6, 7, 5, 8 };
 			//List<int> mangCuoi = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 			timer.Stop();
 			State trThaiDau = new State(mangHienTai);
 			State trThaiCuoi = new State(mangCuoi);
-			BFS bfs = new BFS(trThaiDau, trThaiCuoi);
+			Solve bfs = new Solve(trThaiDau, trThaiCuoi);
 
 			Stopwatch timer_tmp = new Stopwatch();
 			timer_tmp.Reset();
@@ -392,6 +428,8 @@ namespace ProjectAI_Game8Puzzle_BFS
         {
 			lblBuocDi.Text = "Number of steps:";
 			isUpLoad = true;
+			btnNext.Visible = false;
+			btnPrev.Visible = false;
 			string fileName = string.Empty;
 
 			OpenFileDialog opnfd = new OpenFileDialog();
@@ -410,23 +448,32 @@ namespace ProjectAI_Game8Puzzle_BFS
 			FileName = opnfd.FileName;
 
 			
-		}
+		}		
 		
+		private Bitmap ResizeImage(Image img, int maxWidth, int maxHeight)
+		{
+			Bitmap originalImage = new Bitmap(img);
+			int newWidth = maxWidth;
+			int newHeight = maxHeight;
+			return new Bitmap(originalImage, newWidth, newHeight);
+		}
 
-        private void CutImage(string path)
+		private void CutImage(string path)
         {
 
 			
 			var imgarray = new Image[9];
 			var img = Image.FromFile(path);
+			
+			Bitmap image = ResizeImage(img, 312, 312);
 			for (int i = 0; i < 3; i++)
 			{
 				for (int j = 0; j < 3; j++)
 				{
 					var index = i * 3 + j;
-					imgarray[index] = new Bitmap(150, 150); //defaul 104
+					imgarray[index] = new Bitmap(104, 104); 
 					var graphics = Graphics.FromImage(imgarray[index]);
-					graphics.DrawImage(img, new Rectangle(0, 0, 150, 150), new Rectangle(i * 150, j * 150, 150, 150), GraphicsUnit.Pixel);
+					graphics.DrawImage(image, new Rectangle(0, 0, 104, 104), new Rectangle(i * 104, j * 104, 104, 104), GraphicsUnit.Pixel);
 					graphics.Dispose();
 				}
 			}
@@ -495,6 +542,32 @@ namespace ProjectAI_Game8Puzzle_BFS
 					((PictureBox)gbKhung.Controls[j]).Image = mangGoc[mang[j] - 1];
 				}
 			}
+        }
+
+        private void lblThoiGianDem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			isChooseCase = true;
+			ChoiLai();
         }
 
         private void TheHienBuocDi(State state)

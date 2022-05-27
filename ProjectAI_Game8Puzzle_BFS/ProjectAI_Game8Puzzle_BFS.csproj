@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BFS.cs" />
+    <Compile Include="Solve.cs" />
     <Compile Include="Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
