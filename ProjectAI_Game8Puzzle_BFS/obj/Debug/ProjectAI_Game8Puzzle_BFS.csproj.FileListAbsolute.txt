@@ -18,3 +18,14 @@ D:\DOCUMENTATION OF SUBJECTS\HK6\AI\ProjectAI_Game8Puzzle_BFS_BFS\ProjectAI_Game
 D:\DOCUMENTATION OF SUBJECTS\HK6\AI\ProjectAI_Game8Puzzle_BFS_BFS\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.exe
 D:\DOCUMENTATION OF SUBJECTS\HK6\AI\ProjectAI_Game8Puzzle_BFS_BFS\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.pdb
 D:\DOCUMENTATION OF SUBJECTS\HK6\AI\ProjectAI_Game8Puzzle_BFS_BFS\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.csproj.AssemblyReference.cache
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\bin\Debug\ProjectAI_Game8Puzzle_BFS.exe.config
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\bin\Debug\ProjectAI_Game8Puzzle_BFS.exe
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\bin\Debug\ProjectAI_Game8Puzzle_BFS.pdb
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.csproj.AssemblyReference.cache
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.Form1.resources
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.Properties.Resources.resources
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.csproj.GenerateResource.cache
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.csproj.CoreCompileInputs.cache
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.exe
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.pdb
+D:\Documents\HK7\Đồ án CNTT\Game8Puzzle_BFS_AL_Winform_verHCMUTE\ProjectAI_Game8Puzzle_BFS\obj\Debug\ProjectAI_Game8Puzzle_BFS.Home.resources

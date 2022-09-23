@@ -20,7 +20,7 @@ namespace ProjectAI_Game8Puzzle_BFS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Home());
         }
     }
 }

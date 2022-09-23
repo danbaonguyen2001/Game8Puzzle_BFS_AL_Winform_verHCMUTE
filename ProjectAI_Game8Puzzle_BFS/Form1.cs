@@ -65,8 +65,8 @@ namespace ProjectAI_Game8Puzzle_BFS
         private void Form1_Load(object sender, EventArgs e)
         {
 			isUpLoad = false;
-			//soundPlayer.Play();
-			lblBuocDi.Text += soBuocDi;
+            soundPlayer.Play();
+            lblBuocDi.Text += soBuocDi;
 			lblThoiGianDem.Text = "00:00:00";
 			ChoiLai();
 
@@ -170,7 +170,10 @@ namespace ProjectAI_Game8Puzzle_BFS
         {
             DialogResult YesOrNO = MessageBox.Show("Do you want to exit the program?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (sender as Button != btnThoat && YesOrNO == DialogResult.No) e.Cancel = true;
-            if (sender as Button == btnThoat && YesOrNO == DialogResult.Yes) Environment.Exit(0);
+			if (sender as Button == btnThoat && YesOrNO == DialogResult.Yes) {
+				Environment.Exit(0);
+				Application.Exit();
+			}
         }
 
 		private void btnThoat_Click(object sender, EventArgs e)
@@ -568,6 +571,11 @@ namespace ProjectAI_Game8Puzzle_BFS
         {
 			isChooseCase = true;
 			ChoiLai();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void TheHienBuocDi(State state)

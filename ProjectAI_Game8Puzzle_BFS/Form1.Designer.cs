@@ -50,7 +50,6 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.pbx9 = new System.Windows.Forms.PictureBox();
             this.gbAnhGoc = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -279,17 +278,6 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.textBox1.Text = "Dan Bảo Nguyên 19110036";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.Cornsilk;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(1108, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 15);
-            this.textBox2.TabIndex = 34;
-            this.textBox2.Text = "Phùng Khánh Tâm 16110570";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.Cornsilk;
@@ -298,8 +286,9 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(198, 15);
             this.textBox3.TabIndex = 35;
-            this.textBox3.Text = "Nhóm 10";
+            this.textBox3.Text = "Nhóm 2";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
@@ -514,7 +503,6 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
@@ -533,7 +521,7 @@ namespace ProjectAI_Game8Puzzle_BFS
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Game 8 Puzzle";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KiemTraThoatChuongTrinh);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbKhung.ResumeLayout(false);
@@ -578,7 +566,6 @@ namespace ProjectAI_Game8Puzzle_BFS
         private ePOSOne.btnProduct.Button_WOC btnNext;
         private ePOSOne.btnProduct.Button_WOC btnPrev;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox comboBox1;
