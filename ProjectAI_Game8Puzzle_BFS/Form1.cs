@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 // Nhóm sinh viên thực hiện
 //		Dan Bảo Nguyên 19110036
-//		Phùng Khánh Tâm	16110570
+
 
 namespace ProjectAI_Game8Puzzle_BFS
 {
