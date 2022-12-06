@@ -56,7 +56,7 @@ namespace ProjectAI_Game8Puzzle_BFS
 
             Form1 form1 = new Form1();
             form1.Show();
-            this.Hide();
+            this.Visible = false;
         }
 
         private void button1_MouseHover(object sender, EventArgs e)

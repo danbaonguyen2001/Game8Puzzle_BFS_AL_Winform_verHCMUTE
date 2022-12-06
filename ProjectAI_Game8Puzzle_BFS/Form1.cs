@@ -37,11 +37,11 @@ namespace ProjectAI_Game8Puzzle_BFS
         List<int> mangCuoi = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         // Test case 
-        List<int> tesCase1 = new List<int> { 1, 2, 9, 3, 4, 6, 7, 5, 8 }; //trường hợp đb bfs 15/ tối ưu 89
+        List<int> tesCase1 = new List<int> { 1, 2, 3, 4, 5, 6, 7, 9, 8 }; 
         List<int> tesCase2 = new List<int> { 4, 5, 9, 3, 1, 6, 7, 2, 8 }; //15 nhưng khác Number of browsing steps
         List<int> tesCase3 = new List<int> { 4, 9, 5, 3, 1, 6, 7, 2, 8 }; //14 tương tự như 15
         List<int> tesCase4 = new List<int> { 9, 1, 2, 3, 6, 5, 4, 8, 7 }; //bfs không ra, tối ưu ra 53
-        List<int> tesCase5 = new List<int> { 9, 1, 3, 2, 6, 5, 4, 7, 8 };//bfs 15 nhưng lâu, tối ưu 37 nhưng nhanh
+        List<int> tesCase5 = new List<int> { 9, 1, 3, 2, 6, 5, 4, 7, 8 };//bfs 15 ra nhưng lâu, tối ưu 37 nhưng nhanh
 
 
         List<List<int>> mangTestCase = new List<List<int>>();
@@ -75,23 +75,6 @@ namespace ProjectAI_Game8Puzzle_BFS
 
         private void ChoiLai()
         {
-			//đoạn code comment sau dùng để random ngẫu nhiên các trạng thái, nếu số ô bị sai quá nhiều thuật toán sẽ k chạy được
-			//List<int> mangRandom = new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
-			//do
-			//{
-			//  int j;
-			//	//thư viện LinQ hổ trợ hàm trộn mảng (search trên stackoverflow)
-			//	mangRandom = mangRandom.OrderBy(a => Guid.NewGuid()).ToList();
-
-			//  for (int i = 0; i < 9; i++)
-			//  {
-			//		((PictureBox)gbKhung.Controls[i]).Image = mangGoc[mangRandom[i]-1];
-			//		if (mangRandom[i] == 9)
-			//			chiSoOTrong = i;
-			//	}
-			//} while (KiemTraWin());
-			//return mangRandom;
-
 			lblTimeGiai.Text = "Solution time  : 0.0 ms";
 			lblBuocDuyet.Text = "Number of browsing steps: 0";
 			btnNext.Visible = false;
@@ -105,7 +88,9 @@ namespace ProjectAI_Game8Puzzle_BFS
 			if (isChooseCase)
             {
 				mangRandom = mangTestCase[Int32.Parse(comboBox1.SelectedIndex.ToString())];
-            }
+				isChooseCase = false;
+
+			}
 			mangHienTai = mangRandom;
 			if (isUpLoad==true)
             {				
@@ -171,8 +156,7 @@ namespace ProjectAI_Game8Puzzle_BFS
             DialogResult YesOrNO = MessageBox.Show("Do you want to exit the program?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (sender as Button != btnThoat && YesOrNO == DialogResult.No) e.Cancel = true;
 			if (sender as Button == btnThoat && YesOrNO == DialogResult.Yes) {
-				Environment.Exit(0);
-				Application.Exit();
+				Environment.Exit(0);				
 			}
         }
 
@@ -270,7 +254,8 @@ namespace ProjectAI_Game8Puzzle_BFS
                     {
                         timer.Stop();
                         (gbKhung.Controls[8] as PictureBox).Image = mangGoc[8];
-                        MessageBox.Show("Congratulations on winning the game...\nTime : " + timer.Elapsed.ToString().Remove(8) + "\nNumber of steps : " + soBuocDi, "Game Ghép Hình");
+                        MessageBox.Show("Congratulations on winning the game...\nTime : " 
+							+ timer.Elapsed.ToString().Remove(8) + "\nNumber of steps : " + soBuocDi, "Winner");
 						soBuocDi = 0;
                         lblBuocDi.Text = "Number of steps: 0";
                         lblThoiGianDem.Text = "00:00:00";
@@ -374,6 +359,7 @@ namespace ProjectAI_Game8Puzzle_BFS
 					lblThoiGianDem.Text = "00:00:00";
 					timer.Reset();
 					lblBuocDi.Text = "Number of steps:";
+					soBuocDi=0;
 				} 
 			}
 		}
@@ -381,10 +367,7 @@ namespace ProjectAI_Game8Puzzle_BFS
         private void btnGiaiToiUu_Click(object sender, EventArgs e)
 		{
 			btnNext.Visible = true;
-			btnPrev.Visible = true;
-			//List<int> mangDau = ChoiLai();
-			//List<int> mangDau = new List<int> { 1, 2, 9, 3, 4, 6, 7, 5, 8 };
-			//List<int> mangCuoi = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			btnPrev.Visible = true;			
 			timer.Stop();
 			State trThaiDau = new State(mangHienTai);
 			State trThaiCuoi = new State(mangCuoi);
@@ -405,7 +388,8 @@ namespace ProjectAI_Game8Puzzle_BFS
 			this.lblBuocDuyet.Text = "Number of browsing steps: " + bfs.dem.ToString();
 
 			this.currentState = 0;
-			this.lblBuocDi.Text = "Number of steps: " + (currentState + 1).ToString() + "/" + this.ketQuaCuoiCung.Count.ToString();
+			this.lblBuocDi.Text = "Number of steps: " + (currentState + 1).ToString() + 
+				"/" + this.ketQuaCuoiCung.Count.ToString();
 			State tmp = this.ketQuaCuoiCung[this.currentState];
 			List<int> mang = tmp.trangThai;
 			LoadImage(mang);

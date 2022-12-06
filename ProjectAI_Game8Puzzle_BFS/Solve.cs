@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 // Nhóm sinh viên thực hiện
 //		Dan Bảo Nguyên 19110036
-//		Phùng Khánh Tâm	16110570
+
 
 namespace ProjectAI_Game8Puzzle_BFS
 {
@@ -38,6 +38,7 @@ namespace ProjectAI_Game8Puzzle_BFS
 			}
 			return giongnhau;
 		}
+
 		//kiểm tra một trạng thái đã có trong danh sách các trạng thái đã duyệt hay chưa?
 		public bool KiemTraTrangThaiChuaTrongList(List<State> list, State check)
 		{
